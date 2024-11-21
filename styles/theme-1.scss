@@ -1,0 +1,19 @@
+@import "./config";
+
+* {
+  margin: 0;
+  font-family: $font-family;
+}
+
+body {
+  background-image: url("../images/bg-desktop-light.jpg");
+  @include body-configuration();
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}

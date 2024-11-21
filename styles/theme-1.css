@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  font-family: "Josefin Sans", Arial, sans-serif;
+}
+
+body {
+  background-image: url("../images/bg-desktop-light.jpg");
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}/*# sourceMappingURL=theme-1.css.map */
