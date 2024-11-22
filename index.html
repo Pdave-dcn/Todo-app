@@ -15,18 +15,32 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-    <link rel="stylesheet" href="styles/theme-1.css" />
+    <link class="js-stylesheet" rel="stylesheet" href="styles/theme-1.css" />
 
     <title>Frontend Mentor | Todo app</title>
   </head>
   <body>
     <main>
-      <section class="todo-app">
+      <section class="app">
         <div class="app__container">
           <div class="app__header">
-            <hi>TODO</hi>
-            <img src="images/icon-moon.svg" alt="Moon icon" />
+            <hi class="app__header--title">TODO</hi>
+            <img
+              class="app__header--icon js-theme-selector"
+              src="images/icon-moon.svg"
+              alt="Moon icon"
+            />
           </div>
+          <div class="app__input--wrapper">
+            <input type="radio" name="input-field" id="radio-input" />
+            <input
+              type="text"
+              name="input-field"
+              id="input-field"
+              placeholder="Create a new todo..."
+            />
+          </div>
+          <div class="app__todo--container js-todo-container"></div>
         </div>
       </section>
     </main>

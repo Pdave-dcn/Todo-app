@@ -4,7 +4,8 @@
 }
 
 body {
-  background-image: url("../images/bg-desktop-light.jpg");
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-color: hsl(235, 21%, 11%);
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -44,6 +45,7 @@ body {
   padding: 24px;
   border-radius: 5px;
   margin-bottom: 25px;
+  background-color: hsl(235, 21%, 11%);
 }
 .app__input--wrapper input[type=radio] {
   -webkit-appearance: none;
@@ -62,6 +64,13 @@ body {
   margin-left: 15px;
   font-size: 1.1rem;
 }
+.app__input--wrapper input[type=radio] {
+  border: 1px solid hsl(237, 14%, 26%);
+}
+.app__input--wrapper input[type=text] {
+  background-color: hsl(235, 21%, 11%);
+  color: hsl(234, 39%, 85%);
+}
 
 .attribution {
   font-size: 11px;
@@ -70,4 +79,4 @@ body {
 
 .attribution a {
   color: hsl(228, 45%, 44%);
-}/*# sourceMappingURL=theme-1.css.map */
+}/*# sourceMappingURL=theme-2.css.map */

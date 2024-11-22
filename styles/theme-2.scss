@@ -3,7 +3,8 @@
 @include general-config();
 
 body {
-  background-image: url("../images/bg-desktop-light.jpg");
+  background-image: url("../images/bg-desktop-dark.jpg");
+  background-color: $theme-2-Very-Dark-Blue;
   @include body-configuration();
 }
 
@@ -20,6 +21,16 @@ body {
 
   &__input--wrapper {
     @include input-wrapper-config();
+    background-color: $theme-2-Very-Dark-Blue;
+
+    input[type="radio"] {
+      border: 1px solid $theme-2-Very-Dark-Grayish-Blue;
+    }
+
+    input[type="text"] {
+      background-color: $theme-2-Very-Dark-Blue;
+      color: $theme-2-Light-Grayish-Blue;
+    }
   }
 }
 
