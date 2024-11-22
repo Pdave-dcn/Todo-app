@@ -47,7 +47,11 @@ body {
   margin-bottom: 25px;
   background-color: hsl(235, 21%, 11%);
 }
-.app__input--wrapper input[type=radio] {
+.app__input--wrapper .radio-wrapper {
+  display: inline-block;
+  margin-right: 15px;
+}
+.app__input--wrapper input[type=checkbox] {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
@@ -56,12 +60,12 @@ body {
   height: 20px;
   border-radius: 50%;
   border: 1px solid hsl(233, 11%, 84%);
+  display: inline-block;
 }
 .app__input--wrapper input[type=text] {
   width: 100%;
   border: none;
   outline: none;
-  margin-left: 15px;
   font-size: 1.1rem;
 }
 .app__input--wrapper input[type=radio] {

@@ -21,6 +21,81 @@ body {
   &__input--wrapper {
     @include input-wrapper-config();
   }
+
+  &__todo--container {
+    .todo {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 20px;
+      border: 1px solid $theme-1-Very-Light-Grayish-blue;
+
+      &__selector {
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid $theme-1-Very-Light-Grayish-blue;
+        margin-right: 15px;
+        transition: all 300ms ease;
+        cursor: pointer;
+
+        &:not(:checked):hover:before {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          top: -1px;
+          left: -1px;
+          //border: 1px solid transparent;
+          background-image: $bg-linear-gradient;
+        }
+
+        &:not(:checked):hover::after {
+          content: "";
+          position: absolute;
+          width: 17px;
+          height: 17px;
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border: 1px solid transparent;
+          background-color: white;
+        }
+
+        &:checked::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background-image: $bg-linear-gradient;
+          background-size: 100% 100%;
+        }
+
+        &:checked::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 10px;
+          height: 10px;
+          transform: translate(-40%, -40%);
+          border-radius: 50%;
+          background-image: url(../images/icon-check.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
 }
 
 .attribution {

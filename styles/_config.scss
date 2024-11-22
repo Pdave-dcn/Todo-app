@@ -1,5 +1,9 @@
 $primary-color: hsl(220, 98%, 61%);
-$bg-linear-gradient: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+$bg-linear-gradient: linear-gradient(
+  to bottom right,
+  hsl(192, 100%, 67%),
+  hsl(280, 87%, 65%)
+);
 
 $theme-1-Very-Light-Gray: hsl(0, 0%, 98%);
 $theme-1-Very-Light-Grayish-blue: hsl(236, 33%, 92%);
@@ -75,7 +79,12 @@ $font-family: "Josefin Sans", Arial, sans-serif;
   border-radius: 5px;
   margin-bottom: 25px;
 
-  input[type="radio"] {
+  .radio-wrapper {
+    display: inline-block;
+    margin-right: 15px;
+  }
+
+  input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
     position: relative;
@@ -83,13 +92,13 @@ $font-family: "Josefin Sans", Arial, sans-serif;
     height: 20px;
     border-radius: 50%;
     border: 1px solid $theme-1-Light-Grayish-Blue;
+    display: inline-block;
   }
 
   input[type="text"] {
     width: 100%;
     border: none;
     outline: none;
-    margin-left: 15px;
     font-size: $font-size;
   }
 }

@@ -1,3 +1,5 @@
+import * as fromUtilsGet from "./utils.js";
+
 export function updateTheme(element: HTMLImageElement): void {
   const stylesheetElement =
     document.querySelector<HTMLLinkElement>(".js-stylesheet");
@@ -16,5 +18,20 @@ export function updateTheme(element: HTMLImageElement): void {
 }
 
 export function createTodo() {
-  console.log("Click on Enter");
+  const inputValue = fromUtilsGet.getInputValue();
+  if (inputValue.trim() === "") {
+    return;
+  }
+  const todoElement = fromUtilsGet.generateHTML(inputValue);
+
+  const divElement = document.createElement("div");
+  divElement.classList.add("todo");
+  divElement.innerHTML = todoElement;
+
+  const todoContainer =
+    document.querySelector<HTMLElement>(".js-todo-container");
+
+  if (todoContainer) {
+    todoContainer?.appendChild(divElement);
+  }
 }
