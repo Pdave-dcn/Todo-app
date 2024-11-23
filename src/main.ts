@@ -17,7 +17,6 @@ document.addEventListener("click", (event) => {
   const target = event.target as HTMLInputElement;
 
   if (target.type === "checkbox" && target.checked) {
-    console.log("Checkbox");
     document
       .querySelector<HTMLElement>(".js-todo-text")
       ?.classList.add("checked-state");
@@ -33,6 +32,6 @@ document.addEventListener("click", (event) => {
 
   if (target.classList.contains("js-delete-icon")) {
     const todoElement = target.closest(".todo") as HTMLElement;
-    todoElement.remove();
+    fromMainFunctionsGet.deleteTodo(todoElement);
   }
 });

@@ -70,7 +70,6 @@ body {
           border-radius: 50%;
           top: -1px;
           left: -1px;
-          //border: 1px solid transparent;
           background-image: $bg-linear-gradient;
         }
 
@@ -113,6 +112,23 @@ body {
           background-repeat: no-repeat;
           background-size: 100% 100%;
         }
+      }
+    }
+  }
+
+  &__taskbar--wrapper {
+    .taskbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(212, 212, 212);
+      padding: 18px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      button {
+        background: none;
+        border: none;
       }
     }
   }

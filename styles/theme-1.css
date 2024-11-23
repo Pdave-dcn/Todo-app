@@ -150,6 +150,19 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.app__taskbar--wrapper .taskbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(212, 212, 212);
+  padding: 18px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.app__taskbar--wrapper .taskbar button {
+  background: none;
+  border: none;
+}
 
 .attribution {
   font-size: 11px;

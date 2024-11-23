@@ -25,7 +25,17 @@ export function createTodo() {
     divElement.innerHTML = todoElement;
     const todoContainer = document.querySelector(".js-todo-container");
     if (todoContainer) {
-        todoContainer === null || todoContainer === void 0 ? void 0 : todoContainer.appendChild(divElement);
+        todoContainer === null || todoContainer === void 0 ? void 0 : todoContainer.prepend(divElement);
+    }
+    if (todoContainer.children.length > 0 && todoContainer.children.length < 2) {
+        fromUtilsGet.showTaskbar();
+    }
+}
+export function deleteTodo(element) {
+    element.remove();
+    const todoContainer = document.querySelector(".js-todo-container");
+    if (todoContainer && todoContainer.children.length === 0) {
+        fromUtilsGet.removeTaskbar();
     }
 }
 //# sourceMappingURL=main-functions.js.map

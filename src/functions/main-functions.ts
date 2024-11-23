@@ -28,10 +28,26 @@ export function createTodo() {
   divElement.classList.add("todo");
   divElement.innerHTML = todoElement;
 
-  const todoContainer =
-    document.querySelector<HTMLElement>(".js-todo-container");
+  const todoContainer = document.querySelector<HTMLElement>(
+    ".js-todo-container"
+  ) as HTMLElement;
 
   if (todoContainer) {
-    todoContainer?.appendChild(divElement);
+    todoContainer?.prepend(divElement);
+  }
+
+  if (todoContainer.children.length > 0 && todoContainer.children.length < 2) {
+    fromUtilsGet.showTaskbar();
+  }
+}
+
+export function deleteTodo(element: HTMLElement): void {
+  element.remove();
+
+  const todoContainer = document.querySelector(
+    ".js-todo-container"
+  ) as HTMLElement;
+  if (todoContainer && todoContainer.children.length === 0) {
+    fromUtilsGet.removeTaskbar();
   }
 }
