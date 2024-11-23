@@ -23,12 +23,32 @@ body {
   }
 
   &__todo--container {
+    & > div:first-child {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
     .todo {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       background-color: white;
       padding: 20px;
       border: 1px solid $theme-1-Very-Light-Grayish-blue;
+
+      &__wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      &__icon {
+        width: 12px;
+        cursor: pointer;
+      }
+
+      .checked-state {
+        text-decoration: line-through;
+        color: $theme-1-Very-Light-Grayish-blue;
+      }
 
       &__selector {
         -webkit-appearance: none;

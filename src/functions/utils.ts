@@ -13,8 +13,11 @@ export function getInputValue(): string {
 
 export function generateHTML(text: string): string {
   const html = `
-    <input type="checkbox" name="" id="todo-btn" class="todo__selector">
-    <span class="todo__content">${text}</span>
+    <div class="todo__wrapper">
+      <input type="checkbox" name="" id="todo-btn" class="todo__selector">
+    <span class="todo__content js-todo-text">${text}</span>
+    </div>
+    <img class="todo__icon js-delete-icon" src="../../images/icon-cross.svg" alt="cross icon" />
   `;
 
   return html;

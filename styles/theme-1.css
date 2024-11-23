@@ -66,12 +66,29 @@ body {
   outline: none;
   font-size: 1.1rem;
 }
+.app__todo--container > div:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
 .app__todo--container .todo {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: white;
   padding: 20px;
   border: 1px solid hsl(236, 33%, 92%);
+}
+.app__todo--container .todo__wrapper {
+  display: flex;
+  align-items: center;
+}
+.app__todo--container .todo__icon {
+  width: 12px;
+  cursor: pointer;
+}
+.app__todo--container .todo .checked-state {
+  text-decoration: line-through;
+  color: hsl(236, 33%, 92%);
 }
 .app__todo--container .todo__selector {
   -webkit-appearance: none;
