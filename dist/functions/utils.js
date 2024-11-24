@@ -7,9 +7,9 @@ export function getInputValue() {
 }
 export function generateHTML(text) {
     const html = `
-    <div class="todo__wrapper">
-      <input type="checkbox" name="" id="todo-btn" class="todo__selector">
-    <span class="todo__content js-todo-text">${text}</span>
+    <div class="todo__wrapper js-todo-wrapper">
+      <input type="checkbox" class="todo__selector js-todo-selector">
+      <span class="todo__content js-todo-text">${text}</span>
     </div>
     <img class="todo__icon js-delete-icon" src="../../images/icon-cross.svg" alt="cross icon" />
   `;

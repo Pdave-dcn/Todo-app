@@ -44,16 +44,20 @@ document.addEventListener("click", (event) => {
 });
 
 document.addEventListener("click", (event) => {
-  const target = event.target as HTMLInputElement;
+  const target = event.target as HTMLElement;
 
-  if (target.type === "checkbox" && target.checked) {
-    document
-      .querySelector<HTMLElement>(".js-todo-text")
-      ?.classList.add("checked-state");
-  } else {
-    document
-      .querySelector<HTMLElement>(".js-todo-text")
-      ?.classList.remove("checked-state");
+  if (target.classList.contains("js-todo-selector")) {
+    const checkbox = target as HTMLInputElement;
+    const todoWrapper = checkbox.closest(".js-todo-wrapper") as HTMLElement;
+    const textElement = todoWrapper?.querySelector(
+      ".js-todo-text"
+    ) as HTMLElement;
+
+    if (checkbox.checked) {
+      textElement?.classList.add("checked-state");
+    } else {
+      textElement?.classList.remove("checked-state");
+    }
   }
 });
 

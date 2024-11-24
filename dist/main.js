@@ -34,15 +34,17 @@ document.addEventListener("click", (event) => {
     }
 });
 document.addEventListener("click", (event) => {
-    var _a, _b;
     const target = event.target;
-    if (target.type === "checkbox" && target.checked) {
-        (_a = document
-            .querySelector(".js-todo-text")) === null || _a === void 0 ? void 0 : _a.classList.add("checked-state");
-    }
-    else {
-        (_b = document
-            .querySelector(".js-todo-text")) === null || _b === void 0 ? void 0 : _b.classList.remove("checked-state");
+    if (target.classList.contains("js-todo-selector")) {
+        const checkbox = target;
+        const todoWrapper = checkbox.closest(".js-todo-wrapper");
+        const textElement = todoWrapper === null || todoWrapper === void 0 ? void 0 : todoWrapper.querySelector(".js-todo-text");
+        if (checkbox.checked) {
+            textElement === null || textElement === void 0 ? void 0 : textElement.classList.add("checked-state");
+        }
+        else {
+            textElement === null || textElement === void 0 ? void 0 : textElement.classList.remove("checked-state");
+        }
     }
 });
 document.addEventListener("click", (event) => {
