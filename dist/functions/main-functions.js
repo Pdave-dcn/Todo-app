@@ -16,10 +16,9 @@ export function updateTheme(element) {
 }
 export function createTodo() {
     const inputValue = fromUtilsGet.getInputValue();
-    if (inputValue.trim() === "") {
+    if (inputValue.trim() === "")
         return;
-    }
-    const todoElement = fromUtilsGet.generateHTML(inputValue);
+    const todoElement = fromUtilsGet.generateTodoElementHTML(inputValue);
     const divElement = document.createElement("div");
     divElement.classList.add("todo");
     divElement.innerHTML = todoElement;
@@ -37,5 +36,13 @@ export function deleteTodo(element) {
     if (todoContainer && todoContainer.children.length === 0) {
         fromUtilsGet.removeTaskbar();
     }
+}
+export function updateUncheckedCount() {
+    const todoCounterElement = document.querySelector(".js-todo-counter");
+    if (!todoCounterElement)
+        return;
+    const uncheckedTodo = document.querySelectorAll(".js-todo-selector:not(:checked)");
+    let uncheckedCount = uncheckedTodo.length;
+    todoCounterElement.textContent = `${uncheckedCount} item${uncheckedCount > 1 ? "s" : ""} left`;
 }
 //# sourceMappingURL=main-functions.js.map

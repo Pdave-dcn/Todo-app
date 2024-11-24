@@ -11,7 +11,7 @@ export function getInputValue(): string {
   return value;
 }
 
-export function generateHTML(text: string): string {
+export function generateTodoElementHTML(text: string): string {
   const html = `
     <div class="todo__wrapper js-todo-wrapper">
       <input type="checkbox" class="todo__selector js-todo-selector">
@@ -25,7 +25,7 @@ export function generateHTML(text: string): string {
 
 export function generateTaskbarHTML(): string {
   const html = `
-  <span class="taskbar__counter">n items left</span>
+  <span class="taskbar__counter js-todo-counter">n item(s) left</span>
   <div class="taskbar__filter js-filter-btns">
     <button type="button" class="taskbar__filter--all filter focus-state">All</button>
     <button type="button" class="taskbar__filter--active filter">Active</button>

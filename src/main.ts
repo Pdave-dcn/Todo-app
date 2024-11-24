@@ -10,6 +10,7 @@ document
 document.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     fromMainFunctionsGet.createTodo();
+    fromMainFunctionsGet.updateUncheckedCount();
   }
 });
 
@@ -26,7 +27,6 @@ document.addEventListener("click", (event) => {
     target?.classList.contains("filter") &&
     target?.classList.contains("focus-state")
   ) {
-    console.log("The focus button");
     return;
   } else if (
     target?.classList.contains("filter") &&
@@ -55,8 +55,10 @@ document.addEventListener("click", (event) => {
 
     if (checkbox.checked) {
       textElement?.classList.add("checked-state");
+      fromMainFunctionsGet.updateUncheckedCount();
     } else {
       textElement?.classList.remove("checked-state");
+      fromMainFunctionsGet.updateUncheckedCount();
     }
   }
 });
@@ -67,5 +69,6 @@ document.addEventListener("click", (event) => {
   if (target.classList.contains("js-delete-icon")) {
     const todoElement = target.closest(".todo") as HTMLElement;
     fromMainFunctionsGet.deleteTodo(todoElement);
+    fromMainFunctionsGet.updateUncheckedCount();
   }
 });

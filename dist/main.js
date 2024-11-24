@@ -8,6 +8,7 @@ import * as fromMainFunctionsGet from "./functions/main-functions.js";
 document.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         fromMainFunctionsGet.createTodo();
+        fromMainFunctionsGet.updateUncheckedCount();
     }
 });
 document.addEventListener("click", (event) => {
@@ -19,7 +20,6 @@ document.addEventListener("click", (event) => {
         return;
     if ((target === null || target === void 0 ? void 0 : target.classList.contains("filter")) &&
         (target === null || target === void 0 ? void 0 : target.classList.contains("focus-state"))) {
-        console.log("The focus button");
         return;
     }
     else if ((target === null || target === void 0 ? void 0 : target.classList.contains("filter")) &&
@@ -41,9 +41,11 @@ document.addEventListener("click", (event) => {
         const textElement = todoWrapper === null || todoWrapper === void 0 ? void 0 : todoWrapper.querySelector(".js-todo-text");
         if (checkbox.checked) {
             textElement === null || textElement === void 0 ? void 0 : textElement.classList.add("checked-state");
+            fromMainFunctionsGet.updateUncheckedCount();
         }
         else {
             textElement === null || textElement === void 0 ? void 0 : textElement.classList.remove("checked-state");
+            fromMainFunctionsGet.updateUncheckedCount();
         }
     }
 });
@@ -52,6 +54,7 @@ document.addEventListener("click", (event) => {
     if (target.classList.contains("js-delete-icon")) {
         const todoElement = target.closest(".todo");
         fromMainFunctionsGet.deleteTodo(todoElement);
+        fromMainFunctionsGet.updateUncheckedCount();
     }
 });
 //# sourceMappingURL=main.js.map

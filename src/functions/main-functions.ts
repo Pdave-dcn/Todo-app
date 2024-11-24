@@ -17,12 +17,11 @@ export function updateTheme(element: HTMLImageElement): void {
   }
 }
 
-export function createTodo() {
+export function createTodo(): void {
   const inputValue = fromUtilsGet.getInputValue();
-  if (inputValue.trim() === "") {
-    return;
-  }
-  const todoElement = fromUtilsGet.generateHTML(inputValue);
+  if (inputValue.trim() === "") return;
+
+  const todoElement = fromUtilsGet.generateTodoElementHTML(inputValue);
 
   const divElement = document.createElement("div");
   divElement.classList.add("todo");
@@ -50,4 +49,21 @@ export function deleteTodo(element: HTMLElement): void {
   if (todoContainer && todoContainer.children.length === 0) {
     fromUtilsGet.removeTaskbar();
   }
+}
+
+export function updateUncheckedCount(): void {
+  const todoCounterElement = document.querySelector(
+    ".js-todo-counter"
+  ) as HTMLElement;
+  if (!todoCounterElement) return;
+
+  const uncheckedTodo = document.querySelectorAll(
+    ".js-todo-selector:not(:checked)"
+  ) as NodeList;
+
+  let uncheckedCount = uncheckedTodo.length;
+
+  todoCounterElement.textContent = `${uncheckedCount} item${
+    uncheckedCount > 1 ? "s" : ""
+  } left`;
 }
