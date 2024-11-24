@@ -23,6 +23,8 @@ body {
   }
 
   &__todo--container {
+    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.1);
+
     & > div:first-child {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
@@ -33,11 +35,18 @@ body {
       justify-content: space-between;
       background-color: white;
       padding: 20px;
-      border: 1px solid $theme-1-Very-Light-Grayish-blue;
+      border-top: 1px solid $theme-1-Very-Light-Grayish-blue;
+      border-bottom: 1px solid $theme-1-Very-Light-Grayish-blue;
 
       &__wrapper {
         display: flex;
         align-items: center;
+      }
+
+      &__content {
+        color: $theme-1-Very-Dark-Grayish-Blue;
+        font-weight: $font-weight-min;
+        transition: all 200ms ease;
       }
 
       &__icon {
@@ -47,7 +56,7 @@ body {
 
       .checked-state {
         text-decoration: line-through;
-        color: $theme-1-Very-Light-Grayish-blue;
+        color: $theme-1-Light-Grayish-Blue;
       }
 
       &__selector {
@@ -59,7 +68,6 @@ body {
         border-radius: 50%;
         border: 1px solid $theme-1-Very-Light-Grayish-blue;
         margin-right: 15px;
-        transition: all 300ms ease;
         cursor: pointer;
 
         &:not(:checked):hover:before {
@@ -121,14 +129,43 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: rgb(212, 212, 212);
+      background-color: white;
       padding: 18px;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
+      box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.1);
 
       button {
         background: none;
         border: none;
+        outline: none;
+        color: $theme-1-Dark-Grayish-Blue;
+        font-weight: $font-weight-min;
+        cursor: pointer;
+        transition: all 250ms ease;
+      }
+
+      &__counter {
+        color: $theme-1-Light-Grayish-Blue;
+        pointer-events: none;
+      }
+
+      &__filter {
+        button:not(:focus):hover {
+          color: $theme-1-Very-Dark-Grayish-Blue;
+        }
+
+        .focus-state {
+          color: $primary-color;
+          background-color: rgba($color: $primary-color, $alpha: 0.1);
+          padding: 2px;
+        }
+      }
+
+      &__clear {
+        &:hover {
+          color: $theme-1-Very-Dark-Grayish-Blue;
+        }
       }
     }
   }

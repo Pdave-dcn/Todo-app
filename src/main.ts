@@ -14,6 +14,36 @@ document.addEventListener("keydown", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+  const filterBtns = document.querySelectorAll(
+    ".js-filter-btns button"
+  ) as NodeList;
+  if (filterBtns.length === 0) return;
+
+  const target = (event.target as HTMLElement).closest("button");
+  if (!target) return;
+
+  if (
+    target?.classList.contains("filter") &&
+    target?.classList.contains("focus-state")
+  ) {
+    console.log("The focus button");
+    return;
+  } else if (
+    target?.classList.contains("filter") &&
+    !target?.classList.contains("focus-state")
+  ) {
+    filterBtns.forEach((button) => {
+      const btn = button as HTMLElement;
+      if (btn.classList.contains("focus-state")) {
+        btn.classList.remove("focus-state");
+      }
+    });
+
+    target.classList.add("focus-state");
+  }
+});
+
+document.addEventListener("click", (event) => {
   const target = event.target as HTMLInputElement;
 
   if (target.type === "checkbox" && target.checked) {

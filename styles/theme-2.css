@@ -38,6 +38,7 @@ body {
   letter-spacing: 10px;
   font-weight: 700;
   color: white;
+  pointer-events: none;
 }
 .app__input--wrapper {
   display: flex;
@@ -67,6 +68,8 @@ body {
   border: none;
   outline: none;
   font-size: 1.1rem;
+  color: hsl(235, 19%, 35%);
+  font-weight: 500;
 }
 .app__input--wrapper input[type=radio] {
   border: 1px solid hsl(237, 14%, 26%);

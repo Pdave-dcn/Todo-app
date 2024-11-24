@@ -20,7 +20,7 @@ $theme-2-Dark-Grayish-Blue: hsl(234, 11%, 52%);
 $theme-2-Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
 $theme-2-Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 
-$font-weight-min: 400;
+$font-weight-min: 500;
 $font-weight-max: 700;
 $font-size: 1.1rem;
 $font-family: "Josefin Sans", Arial, sans-serif;
@@ -59,6 +59,7 @@ $font-family: "Josefin Sans", Arial, sans-serif;
   letter-spacing: 10px;
   font-weight: $font-weight-max;
   color: white;
+  pointer-events: none;
 }
 
 @mixin header-gen-config {
@@ -100,5 +101,7 @@ $font-family: "Josefin Sans", Arial, sans-serif;
     border: none;
     outline: none;
     font-size: $font-size;
+    color: $theme-1-Very-Dark-Grayish-Blue;
+    font-weight: $font-weight-min;
   }
 }

@@ -11,6 +11,29 @@ document.addEventListener("keydown", (event) => {
     }
 });
 document.addEventListener("click", (event) => {
+    const filterBtns = document.querySelectorAll(".js-filter-btns button");
+    if (filterBtns.length === 0)
+        return;
+    const target = event.target.closest("button");
+    if (!target)
+        return;
+    if ((target === null || target === void 0 ? void 0 : target.classList.contains("filter")) &&
+        (target === null || target === void 0 ? void 0 : target.classList.contains("focus-state"))) {
+        console.log("The focus button");
+        return;
+    }
+    else if ((target === null || target === void 0 ? void 0 : target.classList.contains("filter")) &&
+        !(target === null || target === void 0 ? void 0 : target.classList.contains("focus-state"))) {
+        filterBtns.forEach((button) => {
+            const btn = button;
+            if (btn.classList.contains("focus-state")) {
+                btn.classList.remove("focus-state");
+            }
+        });
+        target.classList.add("focus-state");
+    }
+});
+document.addEventListener("click", (event) => {
     var _a, _b;
     const target = event.target;
     if (target.type === "checkbox" && target.checked) {
