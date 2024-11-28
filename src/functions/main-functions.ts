@@ -1,4 +1,9 @@
 import * as fromUtilsGet from "./utils.js";
+import { Todo } from "./types/types.js";
+
+const todoContainer = document.querySelector<HTMLElement>(
+  ".js-todo-container"
+) as HTMLElement;
 
 export function updateTheme(element: HTMLImageElement): void {
   const stylesheetElement =
@@ -21,31 +26,37 @@ export function createTodo(): void {
   const inputValue = fromUtilsGet.getInputValue();
   if (inputValue.trim() === "") return;
 
-  const todoElement = fromUtilsGet.generateTodoElementHTML(inputValue);
+  const newTodo: Todo = {
+    id: Date.now().toString(),
+    text: inputValue,
+    completed: false,
+    style: "",
+  };
+
+  const todoElement = fromUtilsGet.generateTodoElementHTML(inputValue, newTodo);
 
   const divElement = document.createElement("div");
   divElement.classList.add("todo");
   divElement.innerHTML = todoElement;
 
-  const todoContainer = document.querySelector<HTMLElement>(
-    ".js-todo-container"
-  ) as HTMLElement;
-
   if (todoContainer) {
     todoContainer?.prepend(divElement);
   }
 
-  if (todoContainer.children.length > 0 && todoContainer.children.length < 2) {
+  const todos = fromUtilsGet.loadTodosFromLocalStorage();
+  todos.push(newTodo);
+  fromUtilsGet.saveTodosTolocalStorage(todos);
+
+  if (todoContainer && todoContainer.children.length === 1) {
     fromUtilsGet.showTaskbar();
   }
+
+  updateUncheckedCount();
 }
 
 export function deleteTodo(element: HTMLElement): void {
   element.remove();
 
-  const todoContainer = document.querySelector(
-    ".js-todo-container"
-  ) as HTMLElement;
   if (todoContainer && todoContainer.children.length === 0) {
     fromUtilsGet.removeTaskbar();
   }
@@ -55,6 +66,7 @@ export function updateUncheckedCount(): void {
   const todoCounterElement = document.querySelector(
     ".js-todo-counter"
   ) as HTMLElement;
+
   if (!todoCounterElement) return;
 
   const uncheckedTodo = document.querySelectorAll(
@@ -66,4 +78,41 @@ export function updateUncheckedCount(): void {
   todoCounterElement.textContent = `${uncheckedCount} item${
     uncheckedCount > 1 ? "s" : ""
   } left`;
+}
+
+export function displayAllTodo(): void {
+  const allTodos = fromUtilsGet.getTodoElement("all");
+  renderTodos(allTodos);
+}
+
+export function displayActiveTodo(): void {
+  const activeTodos = fromUtilsGet.getTodoElement("active");
+  renderTodos(activeTodos);
+}
+
+export function displayCompletedTodo(): void {
+  const completedTodos = fromUtilsGet.getTodoElement("completed");
+  renderTodos(completedTodos);
+}
+
+export function renderTodos(todos: Todo[]): void {
+  if (!todoContainer) return;
+
+  todoContainer.innerHTML = "";
+
+  todos.forEach((todo) => {
+    const divElement = document.createElement("div");
+    divElement.classList.add("todo");
+    divElement.innerHTML = fromUtilsGet.generateTodoElementHTML(
+      todo.text,
+      todo
+    );
+
+    const checkbox =
+      divElement.querySelector<HTMLInputElement>(".js-todo-selector");
+
+    if (checkbox) checkbox.checked = todo.completed;
+
+    todoContainer.appendChild(divElement);
+  });
 }
