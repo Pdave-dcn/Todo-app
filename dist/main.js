@@ -97,7 +97,7 @@ function handleTaskbarAction(target) {
             fromMainFunctionsGet.displayCompletedTodo();
             break;
         case target.classList.contains("js-btn-clear"):
-            console.log("Clear all completed todo");
+            fromMainFunctionsGet.clearCompletedTodos();
             break;
     }
 }

@@ -95,6 +95,20 @@ export function displayCompletedTodo(): void {
   renderTodos(completedTodos);
 }
 
+export function clearCompletedTodos(): void {
+  const todos = fromUtilsGet.loadTodosFromLocalStorage();
+
+  const updatedTodos = todos.filter((todo) => !todo.completed);
+
+  fromUtilsGet.saveTodosTolocalStorage(updatedTodos);
+
+  renderTodos(updatedTodos);
+
+  updateUncheckedCount();
+
+  if (updatedTodos.length === 0) fromUtilsGet.removeTaskbar();
+}
+
 export function renderTodos(todos: Todo[]): void {
   if (!todoContainer) return;
 

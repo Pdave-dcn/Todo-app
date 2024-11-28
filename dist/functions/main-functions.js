@@ -66,6 +66,15 @@ export function displayCompletedTodo() {
     const completedTodos = fromUtilsGet.getTodoElement("completed");
     renderTodos(completedTodos);
 }
+export function clearCompletedTodos() {
+    const todos = fromUtilsGet.loadTodosFromLocalStorage();
+    const updatedTodos = todos.filter((todo) => !todo.completed);
+    fromUtilsGet.saveTodosTolocalStorage(updatedTodos);
+    renderTodos(updatedTodos);
+    updateUncheckedCount();
+    if (updatedTodos.length === 0)
+        fromUtilsGet.removeTaskbar();
+}
 export function renderTodos(todos) {
     if (!todoContainer)
         return;

@@ -91,7 +91,6 @@ function handleTodoActions(target: HTMLElement): void {
     } else {
       textElement?.classList.remove("checked-state");
     }
-    //fromUtilsGet.saveTodosTolocalStorage(textElement)
     fromMainFunctionsGet.updateUncheckedCount();
   }
 }
@@ -115,19 +114,16 @@ function handleDeleteTodo(target: HTMLElement): void {
 function handleTaskbarAction(target: HTMLElement): void {
   switch (true) {
     case target.classList.contains("js-btn-all"):
-      //console.log("Show all todo");
       fromMainFunctionsGet.displayAllTodo();
       break;
     case target.classList.contains("js-btn-active"):
-      //console.log("Show active todo");
       fromMainFunctionsGet.displayActiveTodo();
       break;
     case target.classList.contains("js-btn-completed"):
       fromMainFunctionsGet.displayCompletedTodo();
-      //console.log("Show completed todo");
       break;
     case target.classList.contains("js-btn-clear"):
-      console.log("Clear all completed todo");
+      fromMainFunctionsGet.clearCompletedTodos();
       break;
   }
 }
