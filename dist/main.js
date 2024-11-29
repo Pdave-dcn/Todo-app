@@ -89,13 +89,13 @@ function handleDeleteTodo(target) {
 function handleTaskbarAction(target) {
     switch (true) {
         case target.classList.contains("js-btn-all"):
-            fromMainFunctionsGet.displayAllTodo();
+            fromMainFunctionsGet.displayFilteredTodos("all");
             break;
         case target.classList.contains("js-btn-active"):
-            fromMainFunctionsGet.displayActiveTodo();
+            fromMainFunctionsGet.displayFilteredTodos("active");
             break;
         case target.classList.contains("js-btn-completed"):
-            fromMainFunctionsGet.displayCompletedTodo();
+            fromMainFunctionsGet.displayFilteredTodos("completed");
             break;
         case target.classList.contains("js-btn-clear"):
             fromMainFunctionsGet.clearCompletedTodos();

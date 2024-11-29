@@ -24,7 +24,7 @@ export function updateTheme(element: HTMLImageElement): void {
   }
 }
 
-export function loadtheme() {
+export function loadtheme(): void {
   const chosenTheme = localStorage.getItem("theme") as string;
 
   const themeSelector =
@@ -114,19 +114,25 @@ export function updateUncheckedCount(): void {
   } left`;
 }
 
-export function displayAllTodo(): void {
-  const allTodos = fromUtilsGet.getTodoElement("all");
-  renderTodos(allTodos);
-}
+export function displayFilteredTodos(
+  element: "all" | "active" | "completed"
+): void {
+  switch (element) {
+    case "all":
+      const allTodos = fromUtilsGet.getTodoElement("all");
+      renderTodos(allTodos);
+      break;
 
-export function displayActiveTodo(): void {
-  const activeTodos = fromUtilsGet.getTodoElement("active");
-  renderTodos(activeTodos);
-}
+    case "active":
+      const activeTodos = fromUtilsGet.getTodoElement("active");
+      renderTodos(activeTodos);
+      break;
 
-export function displayCompletedTodo(): void {
-  const completedTodos = fromUtilsGet.getTodoElement("completed");
-  renderTodos(completedTodos);
+    case "completed":
+      const completedTodos = fromUtilsGet.getTodoElement("completed");
+      renderTodos(completedTodos);
+      break;
+  }
 }
 
 export function clearCompletedTodos(): void {

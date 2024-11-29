@@ -81,17 +81,21 @@ export function updateUncheckedCount() {
     let uncheckedCount = uncheckedTodo.length;
     todoCounterElement.textContent = `${uncheckedCount} item${uncheckedCount > 1 ? "s" : ""} left`;
 }
-export function displayAllTodo() {
-    const allTodos = fromUtilsGet.getTodoElement("all");
-    renderTodos(allTodos);
-}
-export function displayActiveTodo() {
-    const activeTodos = fromUtilsGet.getTodoElement("active");
-    renderTodos(activeTodos);
-}
-export function displayCompletedTodo() {
-    const completedTodos = fromUtilsGet.getTodoElement("completed");
-    renderTodos(completedTodos);
+export function displayFilteredTodos(element) {
+    switch (element) {
+        case "all":
+            const allTodos = fromUtilsGet.getTodoElement("all");
+            renderTodos(allTodos);
+            break;
+        case "active":
+            const activeTodos = fromUtilsGet.getTodoElement("active");
+            renderTodos(activeTodos);
+            break;
+        case "completed":
+            const completedTodos = fromUtilsGet.getTodoElement("completed");
+            renderTodos(completedTodos);
+            break;
+    }
 }
 export function clearCompletedTodos() {
     const todos = fromUtilsGet.loadTodosFromLocalStorage();
