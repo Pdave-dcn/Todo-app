@@ -6,12 +6,39 @@ export function updateTheme(element) {
         element.src = "images/icon-sun.svg";
         if (stylesheetElement) {
             stylesheetElement.href = "styles/theme-2.css";
+            localStorage.setItem("theme", "theme-2");
         }
     }
     else {
         element.src = "images/icon-moon.svg";
         if (stylesheetElement) {
             stylesheetElement.href = "styles/theme-1.css";
+            localStorage.setItem("theme", "theme-1");
+        }
+    }
+}
+export function loadtheme() {
+    const chosenTheme = localStorage.getItem("theme");
+    const themeSelector = document.querySelector(".js-theme-selector");
+    const stylesheetElement = document.querySelector(".js-stylesheet");
+    if (chosenTheme) {
+        if (chosenTheme === "theme-2") {
+            if (themeSelector) {
+                themeSelector.src = "images/icon-sun.svg";
+            }
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-2.css";
+            }
+        }
+    }
+    else {
+        if (chosenTheme) {
+            if (themeSelector) {
+                themeSelector.src = "images/icon-moon.svg";
+            }
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-1.css";
+            }
         }
     }
 }

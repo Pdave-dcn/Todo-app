@@ -82,7 +82,6 @@ body {
   justify-content: space-between;
   background-color: white;
   padding: 20px;
-  border-top: 1px solid hsl(236, 33%, 92%);
   border-bottom: 1px solid hsl(236, 33%, 92%);
 }
 .app__todo--container .todo__wrapper {
@@ -189,8 +188,6 @@ body {
 }
 .app__taskbar--wrapper .taskbar__filter .focus-state {
   color: hsl(220, 98%, 61%);
-  background-color: rgba(58, 123, 253, 0.1);
-  padding: 2px;
 }
 .app__taskbar--wrapper .taskbar__clear:hover {
   color: hsl(235, 19%, 35%);

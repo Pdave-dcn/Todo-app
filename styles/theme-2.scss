@@ -21,15 +21,69 @@ body {
 
   &__input--wrapper {
     @include input-wrapper-config();
-    background-color: $theme-2-Very-Dark-Blue;
+    background-color: $theme-2-Very-Dark-Desaturated-Blue;
 
-    input[type="radio"] {
-      border: 1px solid $theme-2-Very-Dark-Grayish-Blue;
+    input[type="checkbox"] {
+      border: 1px solid $theme-1-Very-Dark-Grayish-Blue;
     }
 
     input[type="text"] {
-      background-color: $theme-2-Very-Dark-Blue;
+      background-color: $theme-2-Very-Dark-Desaturated-Blue;
       color: $theme-2-Light-Grayish-Blue;
+    }
+  }
+
+  &__todo--container {
+    @include todo-container-properties();
+
+    .todo {
+      background-color: $theme-2-Very-Dark-Desaturated-Blue;
+      //border-top: 1px solid white;
+      border-bottom: 1px solid $theme-2-Very-Dark-Grayish-Blue;
+
+      &__content {
+        color: $theme-2-Light-Grayish-Blue;
+      }
+
+      .checked-state {
+        color: $theme-1-Very-Dark-Grayish-Blue;
+      }
+
+      &__selector {
+        border: 1px solid $theme-1-Very-Dark-Grayish-Blue;
+
+        &:not(:checked):hover::after {
+          background-color: $theme-2-Very-Dark-Desaturated-Blue;
+        }
+      }
+    }
+  }
+
+  &__taskbar--wrapper {
+    @include taskbar-properties();
+
+    .taskbar {
+      background-color: $theme-2-Very-Dark-Desaturated-Blue;
+
+      button {
+        color: $theme-1-Dark-Grayish-Blue;
+      }
+
+      &__counter {
+        color: $theme-1-Very-Dark-Grayish-Blue;
+      }
+
+      &__filter {
+        button:not(:focus):hover {
+          color: $theme-2-Light-Grayish-Blue-hover;
+        }
+      }
+
+      &__clear {
+        &:hover {
+          color: $theme-2-Light-Grayish-Blue-hover;
+        }
+      }
     }
   }
 }

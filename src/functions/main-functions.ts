@@ -13,11 +13,45 @@ export function updateTheme(element: HTMLImageElement): void {
 
     if (stylesheetElement) {
       stylesheetElement.href = "styles/theme-2.css";
+      localStorage.setItem("theme", "theme-2");
     }
   } else {
     element.src = "images/icon-moon.svg";
     if (stylesheetElement) {
       stylesheetElement.href = "styles/theme-1.css";
+      localStorage.setItem("theme", "theme-1");
+    }
+  }
+}
+
+export function loadtheme() {
+  const chosenTheme = localStorage.getItem("theme") as string;
+
+  const themeSelector =
+    document.querySelector<HTMLImageElement>(".js-theme-selector");
+
+  const stylesheetElement =
+    document.querySelector<HTMLLinkElement>(".js-stylesheet");
+
+  if (chosenTheme) {
+    if (chosenTheme === "theme-2") {
+      if (themeSelector) {
+        themeSelector.src = "images/icon-sun.svg";
+      }
+
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-2.css";
+      }
+    }
+  } else {
+    if (chosenTheme) {
+      if (themeSelector) {
+        themeSelector.src = "images/icon-moon.svg";
+      }
+
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-1.css";
+      }
     }
   }
 }

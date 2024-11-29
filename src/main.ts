@@ -2,6 +2,8 @@ import * as fromMainFunctionsGet from "./functions/main-functions.js";
 import * as fromUtilsGet from "./functions/utils.js";
 
 window.addEventListener("DOMContentLoaded", () => {
+  fromMainFunctionsGet.loadtheme();
+
   const todos = fromUtilsGet.loadTodosFromLocalStorage();
 
   fromMainFunctionsGet.renderTodos(todos);

@@ -46,7 +46,7 @@ body {
   padding: 24px;
   border-radius: 5px;
   margin-bottom: 25px;
-  background-color: hsl(235, 21%, 11%);
+  background-color: hsl(235, 24%, 19%);
 }
 .app__input--wrapper .radio-wrapper {
   display: inline-block;
@@ -71,12 +71,166 @@ body {
   color: hsl(235, 19%, 35%);
   font-weight: 500;
 }
-.app__input--wrapper input[type=radio] {
-  border: 1px solid hsl(237, 14%, 26%);
+.app__input--wrapper input[type=checkbox] {
+  border: 1px solid hsl(235, 19%, 35%);
 }
 .app__input--wrapper input[type=text] {
-  background-color: hsl(235, 21%, 11%);
+  background-color: hsl(235, 24%, 19%);
   color: hsl(234, 39%, 85%);
+}
+.app__todo--container {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.app__todo--container > div:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.app__todo--container .todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+.app__todo--container .todo__wrapper {
+  display: flex;
+  align-items: center;
+}
+.app__todo--container .todo__content {
+  color: hsl(235, 19%, 35%);
+  font-weight: 500;
+  transition: all 200ms ease;
+}
+.app__todo--container .todo__icon {
+  width: 12px;
+  cursor: pointer;
+}
+.app__todo--container .todo .checked-state {
+  text-decoration: line-through;
+  color: hsl(233, 11%, 84%);
+}
+.app__todo--container .todo__selector {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid hsl(236, 33%, 92%);
+  margin-right: 15px;
+  cursor: pointer;
+}
+.app__todo--container .todo__selector:not(:checked):hover:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  top: -1px;
+  left: -1px;
+  background-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.app__todo--container .todo__selector:not(:checked):hover::after {
+  content: "";
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid transparent;
+  background-color: white;
+}
+.app__todo--container .todo__selector:checked::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-image: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-size: 100% 100%;
+}
+.app__todo--container .todo__selector:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-40%, -40%);
+  border-radius: 50%;
+  background-image: url(../images/icon-check.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.app__todo--container .todo {
+  background-color: hsl(235, 24%, 19%);
+  border-bottom: 1px solid hsl(237, 14%, 26%);
+}
+.app__todo--container .todo__content {
+  color: hsl(234, 39%, 85%);
+}
+.app__todo--container .todo .checked-state {
+  color: hsl(235, 19%, 35%);
+}
+.app__todo--container .todo__selector {
+  border: 1px solid hsl(235, 19%, 35%);
+}
+.app__todo--container .todo__selector:not(:checked):hover::after {
+  background-color: hsl(235, 24%, 19%);
+}
+.app__taskbar--wrapper .taskbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 18px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.app__taskbar--wrapper .taskbar button {
+  background: none;
+  border: none;
+  outline: none;
+  color: hsl(236, 9%, 61%);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+.app__taskbar--wrapper .taskbar__counter {
+  color: hsl(233, 11%, 84%);
+  pointer-events: none;
+}
+.app__taskbar--wrapper .taskbar__filter button:not(:focus):hover {
+  color: hsl(235, 19%, 35%);
+}
+.app__taskbar--wrapper .taskbar__filter .focus-state {
+  color: hsl(220, 98%, 61%);
+}
+.app__taskbar--wrapper .taskbar__clear:hover {
+  color: hsl(235, 19%, 35%);
+}
+.app__taskbar--wrapper .taskbar {
+  background-color: hsl(235, 24%, 19%);
+}
+.app__taskbar--wrapper .taskbar button {
+  color: hsl(236, 9%, 61%);
+}
+.app__taskbar--wrapper .taskbar__counter {
+  color: hsl(235, 19%, 35%);
+}
+.app__taskbar--wrapper .taskbar__filter button:not(:focus):hover {
+  color: hsl(236, 33%, 92%);
+}
+.app__taskbar--wrapper .taskbar__clear:hover {
+  color: hsl(236, 33%, 92%);
 }
 
 .attribution {
