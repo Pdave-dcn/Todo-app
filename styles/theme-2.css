@@ -169,6 +169,14 @@ body {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.app__todo--container .todo__placeholder {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: hsl(235, 19%, 35%);
+}
 .app__todo--container .todo {
   background-color: hsl(235, 24%, 19%);
   border-bottom: 1px solid hsl(237, 14%, 26%);
@@ -184,6 +192,14 @@ body {
 }
 .app__todo--container .todo__selector:not(:checked):hover::after {
   background-color: hsl(235, 24%, 19%);
+}
+.app__todo--container .todo__placeholder {
+  background-color: hsl(235, 24%, 19%);
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: hsl(234, 39%, 85%);
 }
 .app__taskbar--wrapper .taskbar {
   display: flex;

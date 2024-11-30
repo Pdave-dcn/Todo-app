@@ -98,3 +98,57 @@ export function loadTodosFromLocalStorage(): Todo[] {
     return [];
   }
 }
+
+export function loadtheme(): void {
+  const chosenTheme = localStorage.getItem("theme") as string;
+
+  const themeSelector =
+    document.querySelector<HTMLImageElement>(".js-theme-selector");
+
+  const stylesheetElement =
+    document.querySelector<HTMLLinkElement>(".js-stylesheet");
+
+  if (chosenTheme) {
+    if (chosenTheme === "theme-2") {
+      if (themeSelector) {
+        themeSelector.src = "images/icon-sun.svg";
+      }
+
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-2.css";
+      }
+    }
+  } else {
+    if (chosenTheme) {
+      if (themeSelector) {
+        themeSelector.src = "images/icon-moon.svg";
+      }
+
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-1.css";
+      }
+    }
+  }
+}
+
+export function togglePlaceHolder(): void {
+  const todoContainer =
+    document.querySelector<HTMLElement>(".js-todo-container");
+  const placeholder = document.querySelector<HTMLElement>(
+    ".js-todo-placeholder"
+  );
+
+  if (todoContainer?.children.length === 0) {
+    const placeholderElement = document.createElement("div");
+    placeholderElement.classList.add(
+      "todo__placeholder",
+      "js-todo-placeholder"
+    );
+
+    placeholderElement.textContent = "No todos yet";
+
+    todoContainer.appendChild(placeholderElement);
+  } else {
+    placeholder?.remove();
+  }
+}

@@ -1,9 +1,10 @@
 import * as fromMainFunctionsGet from "./functions/main-functions.js";
 import * as fromUtilsGet from "./functions/utils.js";
 window.addEventListener("DOMContentLoaded", () => {
-    fromMainFunctionsGet.loadtheme();
+    fromUtilsGet.loadtheme();
     const todos = fromUtilsGet.loadTodosFromLocalStorage();
     fromMainFunctionsGet.renderTodos(todos);
+    fromUtilsGet.togglePlaceHolder();
     if (todos.length > 0)
         fromUtilsGet.showTaskbar();
     fromMainFunctionsGet.updateUncheckedCount();

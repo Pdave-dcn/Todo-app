@@ -56,6 +56,15 @@ body {
           background-color: $theme-2-Very-Dark-Desaturated-Blue;
         }
       }
+
+      &__placeholder {
+        background-color: $theme-2-Very-Dark-Desaturated-Blue;
+        padding: 20px;
+        border-radius: 5px;
+        font-size: $font-size;
+        font-weight: $font-weight-min;
+        color: $theme-2-Light-Grayish-Blue;
+      }
     }
   }
 

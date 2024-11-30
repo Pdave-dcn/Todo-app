@@ -17,31 +17,6 @@ export function updateTheme(element) {
         }
     }
 }
-export function loadtheme() {
-    const chosenTheme = localStorage.getItem("theme");
-    const themeSelector = document.querySelector(".js-theme-selector");
-    const stylesheetElement = document.querySelector(".js-stylesheet");
-    if (chosenTheme) {
-        if (chosenTheme === "theme-2") {
-            if (themeSelector) {
-                themeSelector.src = "images/icon-sun.svg";
-            }
-            if (stylesheetElement) {
-                stylesheetElement.href = "styles/theme-2.css";
-            }
-        }
-    }
-    else {
-        if (chosenTheme) {
-            if (themeSelector) {
-                themeSelector.src = "images/icon-moon.svg";
-            }
-            if (stylesheetElement) {
-                stylesheetElement.href = "styles/theme-1.css";
-            }
-        }
-    }
-}
 export function createTodo() {
     const inputValue = fromUtilsGet.getInputValue();
     if (inputValue.trim() === "")
@@ -62,6 +37,7 @@ export function createTodo() {
     const todos = fromUtilsGet.loadTodosFromLocalStorage();
     todos.push(newTodo);
     fromUtilsGet.saveTodosTolocalStorage(todos);
+    fromUtilsGet.togglePlaceHolder();
     if (todoContainer && todoContainer.children.length === 1) {
         fromUtilsGet.showTaskbar();
     }
@@ -72,6 +48,7 @@ export function deleteTodo(element) {
     if (todoContainer && todoContainer.children.length === 0) {
         fromUtilsGet.removeTaskbar();
     }
+    fromUtilsGet.togglePlaceHolder();
 }
 export function updateUncheckedCount() {
     const todoCounterElement = document.querySelector(".js-todo-counter");

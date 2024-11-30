@@ -24,38 +24,6 @@ export function updateTheme(element: HTMLImageElement): void {
   }
 }
 
-export function loadtheme(): void {
-  const chosenTheme = localStorage.getItem("theme") as string;
-
-  const themeSelector =
-    document.querySelector<HTMLImageElement>(".js-theme-selector");
-
-  const stylesheetElement =
-    document.querySelector<HTMLLinkElement>(".js-stylesheet");
-
-  if (chosenTheme) {
-    if (chosenTheme === "theme-2") {
-      if (themeSelector) {
-        themeSelector.src = "images/icon-sun.svg";
-      }
-
-      if (stylesheetElement) {
-        stylesheetElement.href = "styles/theme-2.css";
-      }
-    }
-  } else {
-    if (chosenTheme) {
-      if (themeSelector) {
-        themeSelector.src = "images/icon-moon.svg";
-      }
-
-      if (stylesheetElement) {
-        stylesheetElement.href = "styles/theme-1.css";
-      }
-    }
-  }
-}
-
 export function createTodo(): void {
   const inputValue = fromUtilsGet.getInputValue();
   if (inputValue.trim() === "") return;
@@ -81,10 +49,11 @@ export function createTodo(): void {
   todos.push(newTodo);
   fromUtilsGet.saveTodosTolocalStorage(todos);
 
+  fromUtilsGet.togglePlaceHolder();
+
   if (todoContainer && todoContainer.children.length === 1) {
     fromUtilsGet.showTaskbar();
   }
-
   updateUncheckedCount();
 }
 
@@ -94,6 +63,8 @@ export function deleteTodo(element: HTMLElement): void {
   if (todoContainer && todoContainer.children.length === 0) {
     fromUtilsGet.removeTaskbar();
   }
+
+  fromUtilsGet.togglePlaceHolder();
 }
 
 export function updateUncheckedCount(): void {

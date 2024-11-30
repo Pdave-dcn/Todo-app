@@ -69,4 +69,42 @@ export function loadTodosFromLocalStorage() {
         return [];
     }
 }
+export function loadtheme() {
+    const chosenTheme = localStorage.getItem("theme");
+    const themeSelector = document.querySelector(".js-theme-selector");
+    const stylesheetElement = document.querySelector(".js-stylesheet");
+    if (chosenTheme) {
+        if (chosenTheme === "theme-2") {
+            if (themeSelector) {
+                themeSelector.src = "images/icon-sun.svg";
+            }
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-2.css";
+            }
+        }
+    }
+    else {
+        if (chosenTheme) {
+            if (themeSelector) {
+                themeSelector.src = "images/icon-moon.svg";
+            }
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-1.css";
+            }
+        }
+    }
+}
+export function togglePlaceHolder() {
+    const todoContainer = document.querySelector(".js-todo-container");
+    const placeholder = document.querySelector(".js-todo-placeholder");
+    if ((todoContainer === null || todoContainer === void 0 ? void 0 : todoContainer.children.length) === 0) {
+        const placeholderElement = document.createElement("div");
+        placeholderElement.classList.add("todo__placeholder", "js-todo-placeholder");
+        placeholderElement.textContent = "No todos yet";
+        todoContainer.appendChild(placeholderElement);
+    }
+    else {
+        placeholder === null || placeholder === void 0 ? void 0 : placeholder.remove();
+    }
+}
 //# sourceMappingURL=utils.js.map
