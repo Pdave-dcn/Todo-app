@@ -7,8 +7,8 @@ export function getInputValue() {
 }
 export function generateTodoElementHTML(text, todo) {
     const html = `
-    <div class="todo__wrapper js-todo-wrapper" data-id="${todo.id}">
-      <input type="checkbox" class="todo__selector js-todo-selector">
+    <div class="todo__wrapper js-todo-wrapper" data-id="${todo.id}" draggable="true">
+      <input type="checkbox" name="todo-checkbox" class="todo__selector js-todo-selector" arial-label="mark as complete">
       <span class="todo__content js-todo-text ${todo.style}">${text}</span>
     </div>
     <img class="todo__icon js-delete-icon" src="../../images/icon-cross.svg" alt="cross icon" />
@@ -105,6 +105,41 @@ export function togglePlaceHolder() {
     }
     else {
         placeholder === null || placeholder === void 0 ? void 0 : placeholder.remove();
+    }
+}
+export function updateTodoOrder() {
+    const todoContainer = document.querySelector(".js-todo-container");
+    if (!todoContainer)
+        return;
+    const wrapperElements = document.querySelectorAll(".js-todo-wrapper");
+    const newOrder = [];
+    wrapperElements.forEach((wrapperElement) => {
+        const id = wrapperElement.getAttribute("data-id");
+        if (id) {
+            const todos = loadTodosFromLocalStorage();
+            const todo = todos.find((todo) => todo.id === id);
+            if (todo) {
+                newOrder.push(todo);
+            }
+        }
+    });
+    saveTodosTolocalStorage(newOrder);
+}
+export function toggleReorderNotice() {
+    const taskbarElement = document.querySelector(".js-taskbar-wrapper");
+    const todosContainer = document.querySelector(".js-todo-container");
+    if (!taskbarElement || !todosContainer)
+        return;
+    const existingNotice = taskbarElement.nextElementSibling;
+    if (todosContainer.children.length <= 1) {
+        existingNotice === null || existingNotice === void 0 ? void 0 : existingNotice.remove();
+        return;
+    }
+    if (!(existingNotice === null || existingNotice === void 0 ? void 0 : existingNotice.classList.contains("js-app-notice"))) {
+        const divElement = document.createElement("div");
+        divElement.classList.add("app__notice", "js-app-notice");
+        divElement.textContent = "Drag and drop to reorder list";
+        taskbarElement === null || taskbarElement === void 0 ? void 0 : taskbarElement.insertAdjacentElement("afterend", divElement);
     }
 }
 //# sourceMappingURL=utils.js.map

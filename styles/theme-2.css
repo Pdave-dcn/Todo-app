@@ -80,6 +80,7 @@ body {
 }
 .app__todo--container {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 .app__todo--container > div:first-child {
   border-top-left-radius: 5px;
@@ -201,6 +202,9 @@ body {
   font-weight: 500;
   color: hsl(234, 39%, 85%);
 }
+.app__taskbar--wrapper {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
 .app__taskbar--wrapper .taskbar {
   display: flex;
   justify-content: space-between;
@@ -247,6 +251,13 @@ body {
 }
 .app__taskbar--wrapper .taskbar__clear:hover {
   color: hsl(236, 33%, 92%);
+}
+.app__notice {
+  color: hsl(236, 9%, 61%);
+  font-size: 0.8rem;
+  margin-top: 35px;
+  text-align: center;
+  color: hsl(235, 19%, 35%);
 }
 
 .attribution {

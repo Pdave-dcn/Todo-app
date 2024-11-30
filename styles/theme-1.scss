@@ -29,6 +29,10 @@ body {
   &__taskbar--wrapper {
     @include taskbar-properties();
   }
+
+  &__notice {
+    @include app-notice();
+  }
 }
 
 .attribution {

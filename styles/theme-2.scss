@@ -35,6 +35,7 @@ body {
 
   &__todo--container {
     @include todo-container-properties();
+    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.7);
 
     .todo {
       background-color: $theme-2-Very-Dark-Desaturated-Blue;
@@ -70,6 +71,7 @@ body {
 
   &__taskbar--wrapper {
     @include taskbar-properties();
+    box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.7);
 
     .taskbar {
       background-color: $theme-2-Very-Dark-Desaturated-Blue;
@@ -94,6 +96,11 @@ body {
         }
       }
     }
+  }
+
+  &__notice {
+    @include app-notice();
+    color: $theme-1-Very-Dark-Grayish-Blue;
   }
 }
 

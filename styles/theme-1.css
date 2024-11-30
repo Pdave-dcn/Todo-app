@@ -200,6 +200,12 @@ body {
 .app__taskbar--wrapper .taskbar__clear:hover {
   color: hsl(235, 19%, 35%);
 }
+.app__notice {
+  color: hsl(236, 9%, 61%);
+  font-size: 0.8rem;
+  margin-top: 35px;
+  text-align: center;
+}
 
 .attribution {
   font-size: 11px;

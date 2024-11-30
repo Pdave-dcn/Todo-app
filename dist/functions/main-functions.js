@@ -30,6 +30,7 @@ export function createTodo() {
     const todoElement = fromUtilsGet.generateTodoElementHTML(inputValue, newTodo);
     const divElement = document.createElement("div");
     divElement.classList.add("todo");
+    divElement.draggable = true;
     divElement.innerHTML = todoElement;
     if (todoContainer) {
         todoContainer === null || todoContainer === void 0 ? void 0 : todoContainer.prepend(divElement);
@@ -42,9 +43,11 @@ export function createTodo() {
         fromUtilsGet.showTaskbar();
     }
     updateUncheckedCount();
+    fromUtilsGet.toggleReorderNotice();
 }
 export function deleteTodo(element) {
     element.remove();
+    fromUtilsGet.toggleReorderNotice();
     if (todoContainer && todoContainer.children.length === 0) {
         fromUtilsGet.removeTaskbar();
     }
@@ -79,7 +82,9 @@ export function clearCompletedTodos() {
     const updatedTodos = todos.filter((todo) => !todo.completed);
     fromUtilsGet.saveTodosTolocalStorage(updatedTodos);
     renderTodos(updatedTodos);
+    fromUtilsGet.togglePlaceHolder();
     updateUncheckedCount();
+    fromUtilsGet.toggleReorderNotice();
     if (updatedTodos.length === 0)
         fromUtilsGet.removeTaskbar();
 }
@@ -90,11 +95,14 @@ export function renderTodos(todos) {
     todos.forEach((todo) => {
         const divElement = document.createElement("div");
         divElement.classList.add("todo");
+        divElement.draggable = true;
         divElement.innerHTML = fromUtilsGet.generateTodoElementHTML(todo.text, todo);
         const checkbox = divElement.querySelector(".js-todo-selector");
         if (checkbox)
             checkbox.checked = todo.completed;
         todoContainer.appendChild(divElement);
+        fromUtilsGet.toggleReorderNotice();
+        updateUncheckedCount();
     });
 }
 //# sourceMappingURL=main-functions.js.map

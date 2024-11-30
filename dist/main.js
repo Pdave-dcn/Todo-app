@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     fromUtilsGet.togglePlaceHolder();
     if (todos.length > 0)
         fromUtilsGet.showTaskbar();
+    fromUtilsGet.toggleReorderNotice();
     fromMainFunctionsGet.updateUncheckedCount();
 });
 document.addEventListener("click", (event) => {
@@ -103,4 +104,39 @@ function handleTaskbarAction(target) {
             break;
     }
 }
+let draggedElement = null;
+document.addEventListener("dragstart", (event) => {
+    var _a;
+    const target = event.target.closest(".todo");
+    if (target) {
+        draggedElement = target;
+        (_a = event.dataTransfer) === null || _a === void 0 ? void 0 : _a.setData("plain/text", target.dataset.id || "");
+    }
+});
+document.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    const target = event.target.closest(".todo");
+    if (target && target !== draggedElement) {
+        target.style.borderTop = "2px solid #aaa";
+    }
+});
+document.addEventListener("dragleave", (event) => {
+    const target = event.target.closest(".todo");
+    if (target) {
+        target.style.borderTop = "";
+    }
+});
+document.addEventListener("drop", (event) => {
+    event.preventDefault();
+    const target = event.target.closest(".todo");
+    if (target && draggedElement) {
+        target.style.borderTop = "";
+        const todoContainer = document.querySelector(".js-todo-container");
+        if (todoContainer) {
+            todoContainer.insertBefore(draggedElement, target);
+            console.log("Drop successful");
+            fromUtilsGet.updateTodoOrder();
+        }
+    }
+});
 //# sourceMappingURL=main.js.map

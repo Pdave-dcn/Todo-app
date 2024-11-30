@@ -39,6 +39,7 @@ export function createTodo(): void {
 
   const divElement = document.createElement("div");
   divElement.classList.add("todo");
+  divElement.draggable = true;
   divElement.innerHTML = todoElement;
 
   if (todoContainer) {
@@ -55,10 +56,13 @@ export function createTodo(): void {
     fromUtilsGet.showTaskbar();
   }
   updateUncheckedCount();
+  fromUtilsGet.toggleReorderNotice();
 }
 
 export function deleteTodo(element: HTMLElement): void {
   element.remove();
+
+  fromUtilsGet.toggleReorderNotice();
 
   if (todoContainer && todoContainer.children.length === 0) {
     fromUtilsGet.removeTaskbar();
@@ -114,8 +118,10 @@ export function clearCompletedTodos(): void {
   fromUtilsGet.saveTodosTolocalStorage(updatedTodos);
 
   renderTodos(updatedTodos);
+  fromUtilsGet.togglePlaceHolder();
 
   updateUncheckedCount();
+  fromUtilsGet.toggleReorderNotice();
 
   if (updatedTodos.length === 0) fromUtilsGet.removeTaskbar();
 }
@@ -128,6 +134,7 @@ export function renderTodos(todos: Todo[]): void {
   todos.forEach((todo) => {
     const divElement = document.createElement("div");
     divElement.classList.add("todo");
+    divElement.draggable = true;
     divElement.innerHTML = fromUtilsGet.generateTodoElementHTML(
       todo.text,
       todo
@@ -139,5 +146,7 @@ export function renderTodos(todos: Todo[]): void {
     if (checkbox) checkbox.checked = todo.completed;
 
     todoContainer.appendChild(divElement);
+    fromUtilsGet.toggleReorderNotice();
+    updateUncheckedCount();
   });
 }

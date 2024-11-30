@@ -51,7 +51,6 @@ $font-family: "Josefin Sans", Arial, sans-serif;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  //height: 45vh;
 }
 
 @mixin app-title-config {
@@ -258,4 +257,11 @@ $font-family: "Josefin Sans", Arial, sans-serif;
       }
     }
   }
+}
+
+@mixin app-notice {
+  color: $theme-1-Dark-Grayish-Blue;
+  font-size: 0.8rem;
+  margin-top: 35px;
+  text-align: center;
 }

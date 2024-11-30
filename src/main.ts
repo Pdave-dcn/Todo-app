@@ -12,6 +12,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (todos.length > 0) fromUtilsGet.showTaskbar();
 
+  fromUtilsGet.toggleReorderNotice();
+
   fromMainFunctionsGet.updateUncheckedCount();
 });
 
@@ -131,3 +133,51 @@ function handleTaskbarAction(target: HTMLElement): void {
       break;
   }
 }
+
+let draggedElement: HTMLElement | null = null;
+
+document.addEventListener("dragstart", (event) => {
+  const target = (event.target as HTMLElement).closest(".todo") as HTMLElement;
+
+  if (target) {
+    draggedElement = target;
+    event.dataTransfer?.setData("plain/text", target.dataset.id || "");
+  }
+});
+
+document.addEventListener("dragover", (event) => {
+  event.preventDefault();
+  const target = (event.target as HTMLElement).closest(".todo") as HTMLElement;
+
+  if (target && target !== draggedElement) {
+    target.style.borderTop = "2px solid #aaa";
+  }
+});
+
+document.addEventListener("dragleave", (event) => {
+  const target = (event.target as HTMLElement).closest(".todo") as HTMLElement;
+
+  if (target) {
+    target.style.borderTop = "";
+  }
+});
+
+document.addEventListener("drop", (event) => {
+  event.preventDefault();
+  const target = (event.target as HTMLElement).closest(".todo") as HTMLElement;
+
+  if (target && draggedElement) {
+    target.style.borderTop = "";
+
+    const todoContainer = document.querySelector(
+      ".js-todo-container"
+    ) as HTMLElement;
+
+    if (todoContainer) {
+      todoContainer.insertBefore(draggedElement, target);
+      console.log("Drop successful");
+
+      fromUtilsGet.updateTodoOrder();
+    }
+  }
+});
