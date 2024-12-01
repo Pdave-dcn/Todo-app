@@ -188,7 +188,7 @@ body {
   transition: all 250ms ease;
 }
 .app__taskbar--wrapper .taskbar__counter {
-  color: hsl(233, 11%, 84%);
+  color: hsl(236, 9%, 61%);
   pointer-events: none;
 }
 .app__taskbar--wrapper .taskbar__filter button:not(:focus):hover {
@@ -207,11 +207,54 @@ body {
   text-align: center;
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
+@media screen and (max-width: 555px) {
+  .app {
+    width: 440px;
+  }
 }
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
+@media screen and (max-width: 445px) {
+  .app {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 405px) {
+  .app {
+    width: 350px;
+  }
+  .app__notice {
+    margin-top: 105px;
+    margin-bottom: 20px;
+  }
+  .taskbar {
+    position: relative;
+  }
+  .taskbar__filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: white;
+    width: 330px;
+    top: 70px;
+    transform: translate(-5%);
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+}
+@media screen and (max-width: 375px) {
+  body {
+    background-image: url("../../images/bg-mobile-light.jpg");
+  }
+  .app {
+    width: 335px;
+    margin-top: 40px;
+  }
+  .app__input--wrapper {
+    margin-bottom: 15px;
+  }
+  .taskbar__filter {
+    width: 313px;
+  }
 }/*# sourceMappingURL=theme-1.css.map */

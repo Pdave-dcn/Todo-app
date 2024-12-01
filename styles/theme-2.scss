@@ -1,4 +1,6 @@
-@import "./config";
+@import "./modules/config";
+@import "./modules/mixins";
+@import "./modules/media-queries";
 
 @include general-config();
 
@@ -39,7 +41,6 @@ body {
 
     .todo {
       background-color: $theme-2-Very-Dark-Desaturated-Blue;
-      //border-top: 1px solid white;
       border-bottom: 1px solid $theme-2-Very-Dark-Grayish-Blue;
 
       &__content {
@@ -81,7 +82,7 @@ body {
       }
 
       &__counter {
-        color: $theme-1-Very-Dark-Grayish-Blue;
+        color: $theme-1-Dark-Grayish-Blue;
       }
 
       &__filter {
@@ -104,10 +105,25 @@ body {
   }
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
+// .attribution {
+//   font-size: 11px;
+//   text-align: center;
+// }
+// .attribution a {
+//   color: hsl(228, 45%, 44%);
+// }
+
+@include media-queries();
+
+@media screen and (max-width: 405px) {
+  .taskbar__filter {
+    background-color: $theme-2-Very-Dark-Desaturated-Blue;
+    box-shadow: 0 20px 20px rgba($color: #000000, $alpha: 0.7);
+  }
 }
-.attribution a {
-  color: hsl(228, 45%, 44%);
+
+@media screen and (max-width: 375px) {
+  body {
+    background-image: url("../../images/bg-mobile-dark.jpg");
+  }
 }

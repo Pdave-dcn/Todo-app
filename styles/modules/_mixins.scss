@@ -1,30 +1,3 @@
-$primary-color: hsl(220, 98%, 61%);
-$bg-linear-gradient: linear-gradient(
-  to bottom right,
-  hsl(192, 100%, 67%),
-  hsl(280, 87%, 65%)
-);
-
-$theme-1-Very-Light-Gray: hsl(0, 0%, 98%);
-$theme-1-Very-Light-Grayish-blue: hsl(236, 33%, 92%);
-$theme-1-Light-Grayish-Blue: hsl(233, 11%, 84%);
-$theme-1-Dark-Grayish-Blue: hsl(236, 9%, 61%);
-$theme-1-Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
-$theme-1-title-color: white;
-
-$theme-2-Very-Dark-Blue: hsl(235, 21%, 11%);
-$theme-2-Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
-$theme-2-Light-Grayish-Blue: hsl(234, 39%, 85%);
-$theme-2-Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
-$theme-2-Dark-Grayish-Blue: hsl(234, 11%, 52%);
-$theme-2-Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
-$theme-2-Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
-
-$font-weight-min: 500;
-$font-weight-max: 700;
-$font-size: 1.1rem;
-$font-family: "Josefin Sans", Arial, sans-serif;
-
 @mixin general-config {
   * {
     margin: 0;
@@ -237,7 +210,7 @@ $font-family: "Josefin Sans", Arial, sans-serif;
     }
 
     &__counter {
-      color: $theme-1-Light-Grayish-Blue;
+      color: $theme-1-Dark-Grayish-Blue;
       pointer-events: none;
     }
 

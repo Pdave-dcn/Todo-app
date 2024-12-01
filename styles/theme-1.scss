@@ -1,4 +1,6 @@
-@import "./config";
+@import "./modules/config";
+@import "./modules/mixins";
+@import "./modules/media-queries";
 
 @include general-config();
 
@@ -35,10 +37,12 @@ body {
   }
 }
 
-.attribution {
-  font-size: 11px;
-  text-align: center;
-}
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
+// .attribution {
+//   font-size: 11px;
+//   text-align: center;
+// }
+// .attribution a {
+//   color: hsl(228, 45%, 44%);
+// }
+
+@include media-queries();

@@ -1,0 +1,64 @@
+@mixin media-queries {
+  @media screen and (max-width: 555px) {
+    .app {
+      width: 440px;
+    }
+  }
+
+  @media screen and (max-width: 445px) {
+    .app {
+      width: 400px;
+    }
+  }
+
+  @media screen and (max-width: 405px) {
+    .app {
+      width: 350px;
+
+      &__notice {
+        margin-top: 105px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .taskbar {
+      position: relative;
+
+      &__filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        background-color: white;
+        width: 330px;
+        top: 70px;
+        transform: translate(-5%);
+        padding: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 20px 20px rgba($color: #000000, $alpha: 0.1);
+        border-radius: 5px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+    body {
+      background-image: url("../../images/bg-mobile-light.jpg");
+    }
+
+    .app {
+      width: 335px;
+      margin-top: 40px;
+
+      &__input--wrapper {
+        margin-bottom: 15px;
+      }
+    }
+
+    .taskbar {
+      &__filter {
+        width: 313px;
+      }
+    }
+  }
+}
