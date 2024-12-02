@@ -19,7 +19,7 @@ export function generateTodoElementHTML(text: string, todo: Todo): string {
       <input type="checkbox" name="todo-checkbox" class="todo__selector js-todo-selector" arial-label="mark as complete">
       <span class="todo__content js-todo-text ${todo.style}">${text}</span>
     </div>
-    <img class="todo__icon js-delete-icon" src="images/icon-cross.svg" alt="cross icon" />
+    <img class="todo__icon js-delete-icon" src="../images/icon-cross.svg" alt="cross icon" />
   `;
 
   return html;
