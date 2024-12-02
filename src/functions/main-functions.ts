@@ -8,20 +8,44 @@ const todoContainer = document.querySelector<HTMLElement>(
 export function updateTheme(element: HTMLImageElement): void {
   const stylesheetElement =
     document.querySelector<HTMLLinkElement>(".js-stylesheet");
-  if (element.src.includes("icon-moon.svg")) {
-    element.src = "images/icon-sun.svg";
 
-    if (stylesheetElement) {
-      stylesheetElement.href = "styles/theme-2.css";
-      localStorage.setItem("theme", "theme-2");
+  const body = document.body;
+  body.classList.add("fade-out");
+
+  // Define a function to handle the animation end event
+  const handleAnimationEnd = () => {
+    // Remove the event listener to avoid it being triggered multiple times
+    body.removeEventListener("animationend", handleAnimationEnd);
+
+    // Switch the theme based on the current icon
+    if (element.src.includes("icon-moon.svg")) {
+      element.src = "images/icon-sun.svg";
+
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-2.css";
+        localStorage.setItem("theme", "theme-2");
+      }
+    } else {
+      element.src = "images/icon-moon.svg";
+      if (stylesheetElement) {
+        stylesheetElement.href = "styles/theme-1.css";
+        localStorage.setItem("theme", "theme-1");
+      }
     }
-  } else {
-    element.src = "images/icon-moon.svg";
-    if (stylesheetElement) {
-      stylesheetElement.href = "styles/theme-1.css";
-      localStorage.setItem("theme", "theme-1");
-    }
-  }
+
+    // Remove the fade-out class and add the fade-in class
+    body.classList.remove("fade-out");
+
+    body.classList.add("fade-in");
+
+    // Remove the fade-in class after the animation is complete
+    body.addEventListener("animationend", () => {
+      body.classList.remove("fade-in");
+    });
+  };
+
+  // Add the animationend event listener
+  body.addEventListener("animationend", handleAnimationEnd);
 }
 
 export function createTodo(): void {

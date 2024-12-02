@@ -35,6 +35,13 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.5s ease;
+}
+body.fade-out {
+  animation: fadeOut 0.5s forwards;
+}
+body.fade-in {
+  animation: fadeIn 0.5s forwards;
 }
 
 .app {

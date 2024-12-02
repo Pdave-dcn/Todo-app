@@ -2,20 +2,31 @@ import * as fromUtilsGet from "./utils.js";
 const todoContainer = document.querySelector(".js-todo-container");
 export function updateTheme(element) {
     const stylesheetElement = document.querySelector(".js-stylesheet");
-    if (element.src.includes("icon-moon.svg")) {
-        element.src = "images/icon-sun.svg";
-        if (stylesheetElement) {
-            stylesheetElement.href = "styles/theme-2.css";
-            localStorage.setItem("theme", "theme-2");
+    const body = document.body;
+    body.classList.add("fade-out");
+    const handleAnimationEnd = () => {
+        body.removeEventListener("animationend", handleAnimationEnd);
+        if (element.src.includes("icon-moon.svg")) {
+            element.src = "images/icon-sun.svg";
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-2.css";
+                localStorage.setItem("theme", "theme-2");
+            }
         }
-    }
-    else {
-        element.src = "images/icon-moon.svg";
-        if (stylesheetElement) {
-            stylesheetElement.href = "styles/theme-1.css";
-            localStorage.setItem("theme", "theme-1");
+        else {
+            element.src = "images/icon-moon.svg";
+            if (stylesheetElement) {
+                stylesheetElement.href = "styles/theme-1.css";
+                localStorage.setItem("theme", "theme-1");
+            }
         }
-    }
+        body.classList.remove("fade-out");
+        body.classList.add("fade-in");
+        body.addEventListener("animationend", () => {
+            body.classList.remove("fade-in");
+        });
+    };
+    body.addEventListener("animationend", handleAnimationEnd);
 }
 export function createTodo() {
     const inputValue = fromUtilsGet.getInputValue();
