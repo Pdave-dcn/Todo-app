@@ -10,15 +10,15 @@ This is a simple yet feature-rich **To-Do App** built with HTML, CSS, JavaScript
 
 ### Image 1
 
-![Empty Todo List](screenshots/image-1.jpeg)
+![Empty Todo List](./Screenshots/image-1.jpeg)
 
 ### Image 2
 
-![Dark mode](screenshots/image-2.jpeg)
+![Dark mode](./Screenshots/image-2.jpeg)
 
 ### Image 3
 
-![Todos](screenshots/image-3.jpeg)
+![Todos](./Screenshots/image-3.jpeg)
 
 ---
 
