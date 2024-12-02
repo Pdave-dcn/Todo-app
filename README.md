@@ -10,6 +10,7 @@ This is a simple yet feature-rich **To-Do App** built with HTML, CSS, JavaScript
 
 ### Image 1
 
+<<<<<<< HEAD
 ![Empty Todo List](./Screenshots/image-1.jpeg)
 
 ### Image 2
@@ -19,6 +20,17 @@ This is a simple yet feature-rich **To-Do App** built with HTML, CSS, JavaScript
 ### Image 3
 
 ![Todos](./Screenshots/image-3.jpeg)
+=======
+![Empty Todo List](./screenshots/image-1.jpeg)
+
+### Image 2
+
+![Dark mode](./screenshots/image-2.jpeg)
+
+### Image 3
+
+![Todos](./screenshots/image-3.jpeg)
+>>>>>>> b0c04896119421fdbaaf03c02a37f5d2abd90769
 
 ---
 
