@@ -335,7 +335,7 @@ body.fade-in {
 }
 @media screen and (max-width: 375px) {
   body {
-    background-image: url("../../images/bg-mobile-light.jpg");
+    background-image: url("../images/bg-mobile-light.jpg");
   }
   .app {
     width: 335px;
@@ -356,6 +356,6 @@ body.fade-in {
 }
 @media screen and (max-width: 375px) {
   body {
-    background-image: url("../../images/bg-mobile-dark.jpg");
+    background-image: url("../images/bg-mobile-dark.jpg");
   }
 }/*# sourceMappingURL=theme-2.css.map */
