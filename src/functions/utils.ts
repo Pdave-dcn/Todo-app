@@ -52,6 +52,7 @@ export function showTaskbar(): void {
   divElement.innerHTML = taskbarHTML;
 
   taskbarWrapper?.appendChild(divElement);
+  divElement.classList.add("fade-in");
 }
 
 export function removeTaskbar(): void {
@@ -134,20 +135,25 @@ export function loadtheme(): void {
 export function togglePlaceHolder(): void {
   const todoContainer =
     document.querySelector<HTMLElement>(".js-todo-container");
+
+  const taskbarElement = document.querySelector<HTMLElement>(
+    ".js-taskbar-wrapper"
+  );
+
   const placeholder = document.querySelector<HTMLElement>(
     ".js-todo-placeholder"
   );
 
   if (todoContainer?.children.length === 0) {
     const placeholderElement = document.createElement("div");
-    placeholderElement.classList.add(
-      "todo__placeholder",
-      "js-todo-placeholder"
-    );
+    placeholderElement.classList.add("app__placeholder", "js-app-placeholder");
 
     placeholderElement.textContent = "No todos yet";
 
-    todoContainer.appendChild(placeholderElement);
+    setTimeout(() => {
+      taskbarElement?.insertAdjacentElement("afterend", placeholderElement);
+      placeholderElement.classList.add("fade-in-ph");
+    }, 210);
   } else {
     placeholder?.remove();
   }

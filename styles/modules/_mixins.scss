@@ -5,6 +5,35 @@
   }
 }
 
+@mixin fade-in-out-anim {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn-ph {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 @mixin app-general-config {
   display: flex;
   flex-direction: column;
@@ -34,10 +63,14 @@
   pointer-events: none;
 }
 
-@mixin header-gen-config {
+@mixin u-flex-space-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@mixin header-gen-config {
+  @include u-flex-space-between();
   margin-bottom: 30px;
 
   &--icon {
@@ -86,12 +119,16 @@
     border-top-right-radius: 5px;
   }
   .todo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include u-flex-space-between();
     background-color: white;
     padding: 20px;
     border-bottom: 1px solid $theme-1-Very-Light-Grayish-blue;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+
+    &.fade-out {
+      animation: fadeOut 0.2s forwards;
+    }
 
     &__wrapper {
       display: flex;
@@ -102,6 +139,10 @@
       color: $theme-1-Very-Dark-Grayish-Blue;
       font-weight: $font-weight-min;
       transition: all 200ms ease;
+
+      word-wrap: break-word;
+      white-space: normal;
+      overflow-wrap: break-word;
     }
 
     &__icon {
@@ -118,8 +159,8 @@
       -webkit-appearance: none;
       appearance: none;
       position: relative;
-      width: 20px;
-      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
       border-radius: 50%;
       border: 1px solid $theme-1-Very-Light-Grayish-blue;
       margin-right: 15px;
@@ -154,8 +195,8 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 20px;
-        height: 20px;
+        width: 100%;
+        height: 100%;
         border-radius: 50%;
         background-image: $bg-linear-gradient;
         background-size: 100% 100%;
@@ -176,28 +217,31 @@
         background-size: 100% 100%;
       }
     }
+  }
+}
 
-    &__placeholder {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      font-size: $font-size;
-      font-weight: $font-weight-min;
-      color: $theme-1-Very-Dark-Grayish-Blue;
-    }
+@mixin placeholder {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: $font-size;
+  font-weight: $font-weight-min;
+  color: $theme-1-Very-Dark-Grayish-Blue;
+
+  &.fade-in-ph {
+    animation: fadeIn-ph 0.5s forwards;
   }
 }
 
 @mixin taskbar-properties {
   .taskbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include u-flex-space-between();
     background-color: white;
     padding: 18px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.1);
+    animation: fadeIn 0.5s forwards;
 
     button {
       background: none;

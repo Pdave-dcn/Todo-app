@@ -44,6 +44,7 @@ export function createTodo(): void {
 
   if (todoContainer) {
     todoContainer?.prepend(divElement);
+    //divElement.classList.add("fade-out");
   }
 
   const todos = fromUtilsGet.loadTodosFromLocalStorage();
@@ -60,15 +61,21 @@ export function createTodo(): void {
 }
 
 export function deleteTodo(element: HTMLElement): void {
-  element.remove();
+  element.classList.add("fade-out");
 
-  fromUtilsGet.toggleReorderNotice();
+  element.addEventListener("animationend", () => {
+    element.remove();
 
-  if (todoContainer && todoContainer.children.length === 0) {
-    fromUtilsGet.removeTaskbar();
-  }
+    updateUncheckedCount();
 
-  fromUtilsGet.togglePlaceHolder();
+    fromUtilsGet.toggleReorderNotice();
+
+    if (todoContainer && todoContainer.children.length === 0) {
+      fromUtilsGet.removeTaskbar();
+    }
+
+    fromUtilsGet.togglePlaceHolder();
+  });
 }
 
 export function updateUncheckedCount(): void {

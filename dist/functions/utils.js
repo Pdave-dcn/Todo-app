@@ -35,6 +35,7 @@ export function showTaskbar() {
     divElement.classList.add("taskbar");
     divElement.innerHTML = taskbarHTML;
     taskbarWrapper === null || taskbarWrapper === void 0 ? void 0 : taskbarWrapper.appendChild(divElement);
+    divElement.classList.add("fade-in");
 }
 export function removeTaskbar() {
     const taskbarElement = document.querySelector(".taskbar");
@@ -96,12 +97,16 @@ export function loadtheme() {
 }
 export function togglePlaceHolder() {
     const todoContainer = document.querySelector(".js-todo-container");
+    const taskbarElement = document.querySelector(".js-taskbar-wrapper");
     const placeholder = document.querySelector(".js-todo-placeholder");
     if ((todoContainer === null || todoContainer === void 0 ? void 0 : todoContainer.children.length) === 0) {
         const placeholderElement = document.createElement("div");
-        placeholderElement.classList.add("todo__placeholder", "js-todo-placeholder");
+        placeholderElement.classList.add("app__placeholder", "js-app-placeholder");
         placeholderElement.textContent = "No todos yet";
-        todoContainer.appendChild(placeholderElement);
+        setTimeout(() => {
+            taskbarElement === null || taskbarElement === void 0 ? void 0 : taskbarElement.insertAdjacentElement("afterend", placeholderElement);
+            placeholderElement.classList.add("fade-in-ph");
+        }, 210);
     }
     else {
         placeholder === null || placeholder === void 0 ? void 0 : placeholder.remove();

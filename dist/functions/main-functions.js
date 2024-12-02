@@ -46,12 +46,16 @@ export function createTodo() {
     fromUtilsGet.toggleReorderNotice();
 }
 export function deleteTodo(element) {
-    element.remove();
-    fromUtilsGet.toggleReorderNotice();
-    if (todoContainer && todoContainer.children.length === 0) {
-        fromUtilsGet.removeTaskbar();
-    }
-    fromUtilsGet.togglePlaceHolder();
+    element.classList.add("fade-out");
+    element.addEventListener("animationend", () => {
+        element.remove();
+        updateUncheckedCount();
+        fromUtilsGet.toggleReorderNotice();
+        if (todoContainer && todoContainer.children.length === 0) {
+            fromUtilsGet.removeTaskbar();
+        }
+        fromUtilsGet.togglePlaceHolder();
+    });
 }
 export function updateUncheckedCount() {
     const todoCounterElement = document.querySelector(".js-todo-counter");

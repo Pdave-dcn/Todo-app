@@ -4,6 +4,8 @@
 
 @include general-config();
 
+@include fade-in-out-anim();
+
 body {
   background-image: url("../images/bg-desktop-dark.jpg");
   background-color: $theme-2-Very-Dark-Blue;
@@ -37,7 +39,7 @@ body {
 
   &__todo--container {
     @include todo-container-properties();
-    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.7);
+    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.3);
 
     .todo {
       background-color: $theme-2-Very-Dark-Desaturated-Blue;
@@ -58,16 +60,13 @@ body {
           background-color: $theme-2-Very-Dark-Desaturated-Blue;
         }
       }
-
-      &__placeholder {
-        background-color: $theme-2-Very-Dark-Desaturated-Blue;
-        padding: 20px;
-        border-radius: 5px;
-        font-size: $font-size;
-        font-weight: $font-weight-min;
-        color: $theme-2-Light-Grayish-Blue;
-      }
     }
+  }
+
+  &__placeholder {
+    @include placeholder();
+    background-color: $theme-2-Very-Dark-Desaturated-Blue;
+    color: $theme-2-Light-Grayish-Blue;
   }
 
   &__taskbar--wrapper {

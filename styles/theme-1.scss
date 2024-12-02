@@ -4,6 +4,8 @@
 
 @include general-config();
 
+@include fade-in-out-anim();
+
 body {
   background-image: url("../images/bg-desktop-light.jpg");
   @include body-configuration();
@@ -26,6 +28,10 @@ body {
 
   &__todo--container {
     @include todo-container-properties();
+  }
+
+  &__placeholder {
+    @include placeholder();
   }
 
   &__taskbar--wrapper {
