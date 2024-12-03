@@ -117,7 +117,6 @@ export function renderTodos(todos) {
             checkbox.checked = todo.completed;
         todoContainer.appendChild(divElement);
         fromUtilsGet.toggleReorderNotice();
-        updateUncheckedCount();
     });
 }
 //# sourceMappingURL=main-functions.js.map

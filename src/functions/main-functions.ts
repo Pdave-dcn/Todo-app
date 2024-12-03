@@ -178,6 +178,5 @@ export function renderTodos(todos: Todo[]): void {
 
     todoContainer.appendChild(divElement);
     fromUtilsGet.toggleReorderNotice();
-    updateUncheckedCount();
   });
 }
