@@ -74,7 +74,6 @@ export function getTodoElement(
 
     case "active":
       filteredTodos = allTodos.filter((todo) => !todo.completed);
-
       break;
 
     case "completed":
@@ -100,7 +99,7 @@ export function loadTodosFromLocalStorage(): Todo[] {
   }
 }
 
-export function loadtheme(): void {
+export function loadTheme(): void {
   const chosenTheme = localStorage.getItem("theme") as string;
 
   const themeSelector =

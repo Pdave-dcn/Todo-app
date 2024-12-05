@@ -68,7 +68,6 @@ export function createTodo(): void {
 
   if (todoContainer) {
     todoContainer?.prepend(divElement);
-    //divElement.classList.add("fade-out");
   }
 
   const todos = fromUtilsGet.loadTodosFromLocalStorage();

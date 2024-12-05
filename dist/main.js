@@ -1,7 +1,7 @@
 import * as fromMainFunctionsGet from "./functions/main-functions.js";
 import * as fromUtilsGet from "./functions/utils.js";
 window.addEventListener("DOMContentLoaded", () => {
-    fromUtilsGet.loadtheme();
+    fromUtilsGet.loadTheme();
     const todos = fromUtilsGet.loadTodosFromLocalStorage();
     fromMainFunctionsGet.renderTodos(todos);
     fromUtilsGet.togglePlaceHolder();
@@ -134,7 +134,6 @@ document.addEventListener("drop", (event) => {
         const todoContainer = document.querySelector(".js-todo-container");
         if (todoContainer) {
             todoContainer.insertBefore(draggedElement, target);
-            console.log("Drop successful");
             fromUtilsGet.updateTodoOrder();
         }
     }

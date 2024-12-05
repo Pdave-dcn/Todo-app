@@ -70,7 +70,7 @@ export function loadTodosFromLocalStorage() {
         return [];
     }
 }
-export function loadtheme() {
+export function loadTheme() {
     const chosenTheme = localStorage.getItem("theme");
     const themeSelector = document.querySelector(".js-theme-selector");
     const stylesheetElement = document.querySelector(".js-stylesheet");
